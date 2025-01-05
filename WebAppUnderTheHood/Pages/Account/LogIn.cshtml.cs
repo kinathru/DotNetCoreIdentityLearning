@@ -30,7 +30,8 @@ public class LogIn : PageModel
             var claims = new List<Claim>
             {
                 new(ClaimTypes.Name, "admin"),
-                new(ClaimTypes.Email, "admin@mywebsite.com")
+                new(ClaimTypes.Email, "admin@mywebsite.com"),
+                new("Department", "HR")
             };
 
             var authenticationType = "MyCookieAuth";

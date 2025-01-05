@@ -10,6 +10,11 @@ builder.Services.AddAuthentication("MyCookieAuth").AddCookie("MyCookieAuth", opt
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBelongToHRDepartment", policy => { policy.RequireClaim("Department", "HR"); });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
