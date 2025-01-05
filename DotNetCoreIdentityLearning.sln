@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppUnderTheHood", "WebAppUnderTheHood\WebAppUnderTheHood.csproj", "{2AFD51B1-E66B-4608-80C5-CABDE6456ABB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSecurity", "WebApiSecurity\WebApiSecurity.csproj", "{988F8F80-FF9A-48CF-953D-1E70A1250404}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2AFD51B1-E66B-4608-80C5-CABDE6456ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AFD51B1-E66B-4608-80C5-CABDE6456ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AFD51B1-E66B-4608-80C5-CABDE6456ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
