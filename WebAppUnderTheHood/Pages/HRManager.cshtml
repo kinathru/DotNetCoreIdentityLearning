@@ -4,3 +4,27 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Human Resource Management</h1>
 </div>
+
+<div class="text-center">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temperature C</th>
+            <th>Temperature F</th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.WeatherForecastItems)
+        {
+            <tr>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.TemperatureC</td>
+                <td>@item.TemperatureF</td>
+                <td>@item.Summary</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
