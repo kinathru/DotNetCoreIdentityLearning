@@ -40,8 +40,12 @@ public class LogIn : PageModel
             var authenticationType = "MyCookieAuth";
             var identity = new ClaimsIdentity(claims, authenticationType);
             var claimsPrincipal = new ClaimsPrincipal(identity);
-            
-            await HttpContext.SignInAsync(authenticationType, claimsPrincipal);
+
+            var authenticationProperties = new AuthenticationProperties
+            {
+                IsPersistent = Credential.RememberMe
+            };
+            await HttpContext.SignInAsync(authenticationType, claimsPrincipal, authenticationProperties);
             
             return RedirectToPage("/Index");
         }
@@ -59,4 +63,7 @@ public class Credential
     [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; } = string.Empty;
+
+    [Display(Name = "Remember me?")]
+    public bool RememberMe { get; set; }
 }
