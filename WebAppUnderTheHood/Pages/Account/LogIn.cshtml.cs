@@ -34,6 +34,7 @@ public class LogIn : PageModel
                 new("Department", "HR"),
                 new("Admin", "true"),
                 new("Manager", "true"),
+                new("EmploymentDate", "2024-05-01"),
             };
 
             var authenticationType = "MyCookieAuth";
