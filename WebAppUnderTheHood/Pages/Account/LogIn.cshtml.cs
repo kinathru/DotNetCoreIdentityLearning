@@ -31,7 +31,8 @@ public class LogIn : PageModel
             {
                 new(ClaimTypes.Name, "admin"),
                 new(ClaimTypes.Email, "admin@mywebsite.com"),
-                new("Department", "HR")
+                new("Department", "HR"),
+                new("Admin", "true"),
             };
 
             var authenticationType = "MyCookieAuth";
