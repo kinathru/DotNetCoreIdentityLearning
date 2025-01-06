@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppUnderTheHood", "WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSecurity", "WebApiSecurity\WebApiSecurity.csproj", "{988F8F80-FF9A-48CF-953D-1E70A1250404}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppRazorPages", "WebAppRazorPages\WebAppRazorPages.csproj", "{32DDDEBA-C406-4C6D-B8C9-DCA720121E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{988F8F80-FF9A-48CF-953D-1E70A1250404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32DDDEBA-C406-4C6D-B8C9-DCA720121E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32DDDEBA-C406-4C6D-B8C9-DCA720121E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32DDDEBA-C406-4C6D-B8C9-DCA720121E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32DDDEBA-C406-4C6D-B8C9-DCA720121E3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
