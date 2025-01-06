@@ -34,6 +34,13 @@ builder.Services.AddHttpClient("OurWebAPI", client =>
     client.BaseAddress = new Uri("https://localhost:7011/");
 });
 
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true; // To avoid javascript accessing our cookie
+    options.IdleTimeout = TimeSpan.FromMinutes(20); // If the user is idle for 20 minutes, the session will timeout
+    options.Cookie.IsEssential = true; // Since the session affects the proper functionality of the application, we can set IsEssential to True.
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,6 +58,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapRazorPages();
 
