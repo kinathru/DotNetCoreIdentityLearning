@@ -1,0 +1,45 @@
+﻿@page
+@model LogIn
+
+<h3>User Login</h3>
+
+<div class="container border" style="padding: 20px;">
+    <div class="text-danger" asp-validation-summary="All">
+    </div>
+    <form method="post">
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="CredentialViewModel.Username"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="CredentialViewModel.Username" class="form-control"/>
+                <span class="text-danger" asp-validation-for="CredentialViewModel.Username"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="CredentialViewModel.Password"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="CredentialViewModel.Password" class="form-control"/>
+                <span class="text-danger" asp-validation-for="CredentialViewModel.Password"></span>
+            </div>
+        </div>
+        <div class="row form-check">
+            <div class="col-2">
+                <input type="checkbox" asp-for="CredentialViewModel.RememberMe" class="form-check-input"/>
+                <label asp-for="CredentialViewModel.RememberMe" class="form-check-label"></label>
+            </div>
+            <div class="col-5">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Login"/>
+            </div>
+            <div class="col-5">
+                <a class="btn btn-link" href="/Account/Register">Sign Up</a>
+            </div>
+        </div>
+    </form>
+</div>
