@@ -1,20 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppRazorPages.Services;
 
 namespace WebAppRazorPages.Pages.Account;
 
 public class Register : PageModel
 {
-    private readonly UserManager<IdentityUser> userManager;
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly IEmailService _emailService;
 
     [BindProperty]
     public RegisterViewModel RegisterViewModel { get; set; } = new();
 
-    public Register(UserManager<IdentityUser> userManager)
+    public Register(UserManager<IdentityUser> userManager, IEmailService emailService)
     {
-        this.userManager = userManager;
+        this._userManager = userManager;
+        _emailService = emailService;
     }
 
     public void OnGet()
@@ -37,12 +41,18 @@ public class Register : PageModel
             UserName = RegisterViewModel.Email
         };
 
-        var result = await userManager.CreateAsync(user, RegisterViewModel.Password);
+        var result = await _userManager.CreateAsync(user, RegisterViewModel.Password);
         if (result.Succeeded)
         {
-            var emailConfirmationToken = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            
-            return Redirect(Url.PageLink(pageName: "/Account/ConfirmEmail", values: new { userId = user.Id, token = emailConfirmationToken }) ?? string.Empty);
+            var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            var pageLink = Url.PageLink(pageName: "/Account/ConfirmEmail",
+                values: new { userId = user.Id, token = emailConfirmationToken }) ?? string.Empty;
+
+            await _emailService.SendAsync("kinathru@gmail.com", user.Email, "Please confirm your email",
+                $"Please click on this link to confirm your email address : {pageLink}");
+
+            return RedirectToPage("/Account/Login");
         }
 
         foreach (var err in result.Errors)
