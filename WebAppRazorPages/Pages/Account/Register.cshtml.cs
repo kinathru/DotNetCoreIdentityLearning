@@ -3,19 +3,20 @@ using System.Net.Mail;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppRazorPages.Data.Account;
 using WebAppRazorPages.Services;
 
 namespace WebAppRazorPages.Pages.Account;
 
 public class Register : PageModel
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<User> _userManager;
     private readonly IEmailService _emailService;
 
     [BindProperty]
     public RegisterViewModel RegisterViewModel { get; set; } = new();
 
-    public Register(UserManager<IdentityUser> userManager, IEmailService emailService)
+    public Register(UserManager<User> userManager, IEmailService emailService)
     {
         this._userManager = userManager;
         _emailService = emailService;
@@ -35,10 +36,12 @@ public class Register : PageModel
         // Validate email address (optional)
 
         // Create the user
-        var user = new IdentityUser()
+        var user = new User()
         {
             Email = RegisterViewModel.Email,
-            UserName = RegisterViewModel.Email
+            UserName = RegisterViewModel.Email,
+            Department = RegisterViewModel.Department,
+            Position = RegisterViewModel.Position
         };
 
         var result = await _userManager.CreateAsync(user, RegisterViewModel.Password);
@@ -73,4 +76,10 @@ public class RegisterViewModel
     [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; } = string.Empty;
+
+    [Required]
+    public string Department { get; set; } = string.Empty;
+
+    [Required]
+    public string Position { get; set; } = string.Empty;
 }

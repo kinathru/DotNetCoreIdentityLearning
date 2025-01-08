@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppRazorPages.Data.Account;
 
 namespace WebAppRazorPages.Pages.Account;
 
-public class ConfirmEmail(UserManager<IdentityUser> userManager) : PageModel
+public class ConfirmEmail(UserManager<User> userManager) : PageModel
 {
     [BindProperty]
     public string Message { get; set; } = string.Empty;

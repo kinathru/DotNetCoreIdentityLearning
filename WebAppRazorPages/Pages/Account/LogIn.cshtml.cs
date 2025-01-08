@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebAppRazorPages.Data.Account;
 
 namespace WebAppRazorPages.Pages.Account;
 
-public class LogIn(SignInManager<IdentityUser> signInManager) : PageModel
+public class LogIn(SignInManager<User> signInManager) : PageModel
 {
     [BindProperty]
     public CredentialViewModel CredentialViewModel { get; set; } = new();
