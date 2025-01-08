@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Net.Mail;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -43,10 +44,16 @@ public class Register : PageModel
             Department = RegisterViewModel.Department,
             Position = RegisterViewModel.Position
         };
+        
+        var claimDepartment = new Claim("Department", RegisterViewModel.Department);
+        var claimPosition = new Claim("Position", RegisterViewModel.Position);
 
         var result = await _userManager.CreateAsync(user, RegisterViewModel.Password);
         if (result.Succeeded)
         {
+            await _userManager.AddClaimAsync(user, claimDepartment);
+            await _userManager.AddClaimAsync(user, claimPosition);
+            
             var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
             var pageLink = Url.PageLink(pageName: "/Account/ConfirmEmail",
