@@ -32,6 +32,26 @@ public class LogIn(SignInManager<User> signInManager) : PageModel
         {
             return RedirectToPage("/Index");
         }
+        else
+        {
+            if (result.RequiresTwoFactor)
+            {
+                return RedirectToPage("/Account/LoginTwoFactor", new
+                {
+                    UserName = this.CredentialViewModel.Username,
+                    RememberMe = this.CredentialViewModel.RememberMe
+                });
+            }
+
+            if (result.IsLockedOut)
+            {
+                ModelState.AddModelError("Login", "This account is locked out");
+            }
+            else
+            {
+                ModelState.AddModelError("Login", "Failed to login");
+            }
+        }
 
         ModelState.AddModelError("Login", result.IsLockedOut ? "You are locked out" : "Invalid login or password");
 
