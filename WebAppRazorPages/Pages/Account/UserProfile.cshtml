@@ -1,0 +1,50 @@
+﻿@page
+@model WebAppRazorPages.Pages.Account.UserProfile
+
+<h3>User Profile</h3>
+<br/>
+<div class="container border" style="padding: 20px;">
+    <div class="text-danger" asp-validation-summary="All">
+    </div>
+    <form method="post">
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="ProfileViewModel.Email"></label>
+            </div>
+            <div class="col-5 mb-2">
+                <input type="text" asp-for="ProfileViewModel.Email" class="form-control" readonly/>
+                <span class="text-danger" asp-validation-for="ProfileViewModel.Email"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="ProfileViewModel.Department"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="ProfileViewModel.Department" class="form-control"/>
+                <span class="text-danger" asp-validation-for="ProfileViewModel.Department"></span>
+            </div>
+        </div>
+        <div class="row  mb-2">
+            <div class="col-2">
+                <label asp-for="ProfileViewModel.Position"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="ProfileViewModel.Position" class="form-control"/>
+                <span class="text-danger" asp-validation-for="ProfileViewModel.Position"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
+{
+    <div class="alert alert-success mt-2" role="alert">
+        @Model.SuccessMessage
+    </div>
+}
