@@ -36,10 +36,11 @@ public class LogIn(SignInManager<User> signInManager) : PageModel
         {
             if (result.RequiresTwoFactor)
             {
-                return RedirectToPage("/Account/LoginTwoFactor", new
+                // var redirectionPage = "/Account/LoginTwoFactor"; // For email 2 factor
+                var redirectionPage = "/Account/LoginTwoFactorWithAuthenticator"; // For authenticator app 2 factor
+                return RedirectToPage(redirectionPage, new
                 {
-                    UserName = this.CredentialViewModel.Username,
-                    RememberMe = this.CredentialViewModel.RememberMe
+                   CredentialViewModel.RememberMe
                 });
             }
 
