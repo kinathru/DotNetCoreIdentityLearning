@@ -4,6 +4,14 @@
 <h3>Step 1: </h3>
 <p>Please enter the key to your authenticator app:</p>
 <p>
+    @if (Model.ViewModel.QRCodeBytes != null)
+    {
+        <img alt="QR Code"
+             src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.ViewModel.QRCodeBytes))"
+             height="300" width="300"/>
+    }
+</p>
+<p>
     @Model.ViewModel.Key
 </p>
 
@@ -34,6 +42,7 @@
             @* We need the following hidden field to keep the Authenticator Key posted back and forth 
             even when the user enters a wrong code and MFA setup fails. *@
             <input type="hidden" asp-for="ViewModel.Key"/>
+            <input type="hidden" asp-for="ViewModel.QRCodeBytes"/>
         </div>
     </div>
 </form>
